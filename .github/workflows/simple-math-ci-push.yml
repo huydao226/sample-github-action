@@ -1,4 +1,4 @@
-name: Simple Math CI
+name: Simple Math CI Push
 
 on:
   push:
