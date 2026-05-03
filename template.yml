@@ -1,0 +1,32 @@
+name: <workflow_name>
+
+on:
+  <trigger_events>
+
+env:
+  <global_environment_variables>
+
+jobs:
+  <job_id>:
+    name: <job_name>
+    runs-on: <runner>
+
+    needs: <dependency_jobs>
+
+    strategy:
+      <matrix_or_parallel_config>
+
+    env:
+      <job_level_env>
+
+    steps:
+      - name: <step_name>
+        uses: <action>
+
+      - name: <step_name>
+        run: <command>
+
+      - name: <step_name>
+        env:
+          <step_env>
+        run: <command>

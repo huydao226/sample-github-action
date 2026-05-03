@@ -1,0 +1,37 @@
+name: Simple Math CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      A:
+        description: "Number A"
+        required: true
+        default: "2"
+      B:
+        description: "Number B"
+        required: true
+        default: "3"
+      C:
+        description: "Multiplier C"
+        required: true
+        default: "10"
+
+jobs:
+  calculate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Step 1 - Calculate A + B
+        id: sum
+        run: |
+          result=$((${{ github.event.inputs.A }} + ${{ github.event.inputs.B }}))
+          echo "SUM=$result" >> $GITHUB_ENV
+
+      - name: Step 2 - Print result
+        run: |
+          echo "Result of A + B is: $SUM"
+
+      - name: Step 3 - Multiply by C
+        run: |
+          final=$(($SUM * ${{ github.event.inputs.C }}))
+          echo "Final result after multiply C is: $final"

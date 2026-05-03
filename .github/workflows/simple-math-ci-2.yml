@@ -1,0 +1,23 @@
+name: Simple Math CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      A:
+        description: "Number A"
+        required: true
+        default: "2"
+
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Step 1 - Say hello
+        run: echo "Hello GitHub Actions"
